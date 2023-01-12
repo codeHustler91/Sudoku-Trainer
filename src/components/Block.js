@@ -13,7 +13,8 @@ function Block(props) {
         if (Array.isArray(cell)) {
             return <EmptyCell key={idx} idx={idx} 
                 blockIdx={props.idx} 
-                enterNumber={props.enterNumber} 
+                enterNumber={props.enterNumber}
+                removeUserCrossOut={props.removeUserCrossOut}
                 cellOptions={cell} 
                 highlightNums={props.highlightNums}
                 xoToolActive={props.xoToolActive} />

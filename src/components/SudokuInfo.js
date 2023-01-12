@@ -1,4 +1,4 @@
-import { boardList } from "../functions/constants";
+import { boardList } from "../utils/constants";
 
 export default function SudokuInfo(props) {
     const puzzleButtons = boardList.map((board, idx) => {

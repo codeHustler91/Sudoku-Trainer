@@ -5,8 +5,9 @@ function Container (props) {
         return (
             <Block 
                 key={idx} idx={idx} 
-                enterNumber={props.enterNumber} 
-                blockMatrix={block} 
+                enterNumber={props.enterNumber}
+                removeUserCrossOut={props.removeUserCrossOut}
+                blockMatrix={block}
                 highlightNums={props.highlightNums}
                 xoToolActive={props.xoToolActive} />
         );

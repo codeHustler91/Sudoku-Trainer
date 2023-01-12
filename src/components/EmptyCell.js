@@ -13,13 +13,14 @@ function EmptyCell(props) {
         if (Array.isArray(num)) {
             // an array here means its been eliminated as a possibility for this cell
             let button;
-            if (num[1] === "User") {
+            if (num[1] === "User" && props.xoToolActive) {
+                // option has been crossed out by user and xoTool is active
                 button = <button className={`num-btn not-poss ${size}`} key={idx} value={num[0]}
-                        // onClick={() => props.removeCrossOut(props.blockIdx, props.idx, idx, num)}
-                        >
-                        {num[0]}</button>
+                            onClick={() => props.removeUserCrossOut(props.blockIdx, props.idx, num)}>
+                            {num[0]}
+                        </button>
             } else {
-                button = <button className={`num-btn not-poss ${size}`} key={idx}>{num[0]}</button>
+                button = <button className={`num-btn not-poss ${size}`} key={idx} value={num[0]}>{num[0]}</button>
             }
             return (<span key={idx}
                         className="tooltip"

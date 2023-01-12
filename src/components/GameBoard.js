@@ -2,8 +2,8 @@ import React from 'react';
 import Container from './Container';
 import Highlight from './Highlight';
 import CrossOutTool from './CrossOutTool';
-import { boards, answers } from '../functions/constants';
-import { eliminateOnSquares, removeKnownAnswers } from '../functions/algos';
+import { boards, answers } from '../utils/constants';
+import { eliminateOnSquares, removeKnownAnswers } from '../utils/algos';
 
 class GameBoard extends React.Component {
   constructor(props) {
@@ -29,16 +29,24 @@ class GameBoard extends React.Component {
         this.eliminatePhase1(boards[this.props.board]));
     }
   }
+  removeUserCrossOut = (blockIdx, cellIdx, value) => {
+    // function only given to number options who've been crossed out by users and xoTool is active
+    const newMatrix = [...this.state.possMatrix];
+    this.userCrossOut = this.userCrossOut.filter(
+      xoObj => (xoObj.blockIdx !== blockIdx && xoObj.cellIdx !== cellIdx && xoObj.number !== value[0])
+    );
+    this.eliminatePhase1(newMatrix);
+  }
 
   enterNumber = (blockIdx, cellIdx, value) => {
     const newMatrix = [...this.state.possMatrix];
     if (this.state.xoToolActive) {
         if (answers[this.props.board][blockIdx][cellIdx] !== parseInt(value)) {
-            // if cross out tool is selected and the number is not the answer for that cell
-            this.userCrossOut.push({blockIdx, cellIdx, number: parseInt(value)});
-            this.eliminatePhase1(newMatrix);
+          // if cross out tool is selected and the number is not the answer for that cell
+          this.userCrossOut.push({blockIdx, cellIdx, number: parseInt(value)});
+          this.eliminatePhase1(newMatrix);
         } else {
-            alert("Don't cross out that one! Exit Cross Out mode to pick answers.");
+          alert("Don't cross out that one! Exit Cross Out mode to pick answers.");
         }
     } else if (this.props.board === "blank" || answers[this.props.board][blockIdx][cellIdx] === parseInt(value)) {
         newMatrix[blockIdx][cellIdx] = parseInt(value);
@@ -93,6 +101,7 @@ class GameBoard extends React.Component {
         </div>
         <Container 
           enterNumber={this.enterNumber} 
+          removeUserCrossOut={this.removeUserCrossOut}
           possMatrix={this.state.possMatrix}
           highlightNums={this.state.highlightNums}
           xoToolActive={this.state.xoToolActive} />
