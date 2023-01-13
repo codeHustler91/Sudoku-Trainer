@@ -1,9 +1,8 @@
 export function eliminateOnSquares(matrix) {
-
-  const { rows , cols } = addAnswersToRowColList(matrix);
-  // for each block, if a number is not included, push to unused matrix
+  // for each block, if a number is not included, push to unused list
   const blockUnused = matrix.map(block => [1,2,3,4,5,6,7,8,9].filter(num => !block.includes(num)));
-
+  
+  const { rows , cols } = addAnswersToRowColList(matrix);
   // check each cell to its col and row and eliminate further num possiblilites
   const possMatrix = matrix.map((block, blockIdx) => {
     return block.map((cell, idx) => {
@@ -17,7 +16,7 @@ export function eliminateOnSquares(matrix) {
   return possMatrix;
 }
 function addAnswersToRowColList(possMatrix) {
-  // go through matrix/blocks, if the cell is an number/answer then add it to correspoding row/col
+  // go through matrix/blocks, if the cell is a number/answer then add it to correspoding row/col
   const cols = [[],[],[],[],[],[],[],[],[]];
   const rows = [[],[],[],[],[],[],[],[],[]];
   possMatrix.forEach((block, blockIdx) => {
@@ -87,53 +86,53 @@ function addAnswersToRowColList(possMatrix) {
   return { rows, cols };
 }
 function convertCellToRowCol(blockIdx, cellIdx) {
-    let row, col;
-    // rows
-    if (blockIdx < 3) {
-      if (cellIdx < 3) {
-        row = 0;
-      } else if (cellIdx < 6) {
-        row = 1;
-      } else row = 2;
-    } else if (blockIdx < 6) {
-      if (cellIdx < 3) {
-        row = 3;
-      } else if (cellIdx < 6) {
-        row = 4;
-      } else row = 5;
-    } else {
-      if (cellIdx < 3) {
-        row = 6;
-      } else if (cellIdx < 6) {
-        row = 7;
-      } else row = 8;
-    }
-    // columns
-    const leftCol = [0,3,6]; // left 3 blocks of the matrix or left 3 cells in block
-    const middleCol = [1,4,7]; // middle 3 blocks of the matrix or middle 3 cells in block
-    if (leftCol.includes(blockIdx)) {
-      if (leftCol.includes(cellIdx)) {
-        col = 0;
-      } else if (middleCol.includes(cellIdx)) {
-        col = 1;
-      } else col = 2;
-    } else if (middleCol.includes(blockIdx)) {
-      if (leftCol.includes(cellIdx)) {
-        col = 3;
-      } else if (middleCol.includes(cellIdx)) {
-        col = 4;
-      } else col = 5;
-    } else {
-      if (leftCol.includes(cellIdx)) {
-        col = 6;
-      } else if (middleCol.includes(cellIdx)) {
-        col = 7;
-      } else col = 8;
-    }
-    return { row, col };
+  let row, col;
+  // rows
+  if (blockIdx < 3) {
+    if (cellIdx < 3) {
+      row = 0;
+    } else if (cellIdx < 6) {
+      row = 1;
+    } else row = 2;
+  } else if (blockIdx < 6) {
+    if (cellIdx < 3) {
+      row = 3;
+    } else if (cellIdx < 6) {
+      row = 4;
+    } else row = 5;
+  } else {
+    if (cellIdx < 3) {
+      row = 6;
+    } else if (cellIdx < 6) {
+      row = 7;
+    } else row = 8;
+  }
+  // columns
+  const leftCol = [0,3,6]; // left 3 blocks of the matrix or left 3 cells in block
+  const middleCol = [1,4,7]; // middle 3 blocks of the matrix or middle 3 cells in block
+  if (leftCol.includes(blockIdx)) {
+    if (leftCol.includes(cellIdx)) {
+      col = 0;
+    } else if (middleCol.includes(cellIdx)) {
+      col = 1;
+    } else col = 2;
+  } else if (middleCol.includes(blockIdx)) {
+    if (leftCol.includes(cellIdx)) {
+      col = 3;
+    } else if (middleCol.includes(cellIdx)) {
+      col = 4;
+    } else col = 5;
+  } else {
+    if (leftCol.includes(cellIdx)) {
+      col = 6;
+    } else if (middleCol.includes(cellIdx)) {
+      col = 7;
+    } else col = 8;
+  }
+  return { row, col };
 }
 export function removeKnownAnswers(possMatrix, xOutList = []) {
-  // if a cell has a known answer, 'cross out' that num from its block, row, and column (turns red, can't click)
+  // if a cell has a known answer, 'cross out' that num option from its block, row, and column (turns red, can't click)
   xOutList.forEach(xOut => {
     if (Array.isArray(possMatrix[xOut.blockIdx][xOut.cellIdx])) {
       const xOutIdx = possMatrix[xOut.blockIdx][xOut.cellIdx].indexOf(xOut.number)
@@ -142,6 +141,7 @@ export function removeKnownAnswers(possMatrix, xOutList = []) {
       }
     }
   });
+  // JSON stringify and JSON parse is the only way i know of to deeply copy a nested array
   let newPossMatrix = JSON.parse(JSON.stringify(possMatrix));
   // convert possibilty matrix into rows and columns
   let rowColPossMatrix = [[],[],[],[],[],[],[],[],[]];
@@ -152,7 +152,7 @@ export function removeKnownAnswers(possMatrix, xOutList = []) {
     });
   });
 
-  let kar = {}; // known answer registry... aka single possibility registry
+  let kar = {}; // known answer registry
   let prevLength = 0;
 
   do {

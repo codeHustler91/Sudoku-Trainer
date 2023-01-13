@@ -55,7 +55,7 @@
 .white-back {
   background-color: #fff;
 }
-.red-back-h:hover {
+.red-back-hov:hover {
   background-color: rgb(224 60 25 / 41%);
   cursor: pointer;
 }
@@ -128,6 +128,10 @@ h1 {
 .not-poss {
   background-color: rgb(224 60 25 / 41%);
   border: 1px solid rgb(224 60 25 / 41%);
+}
+.pointer:hover {
+  border: 1px solid rgb(182, 236, 107);
+  cursor: pointer;
 }
 .opt-size-1 {
   height: 18px;

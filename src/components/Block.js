@@ -1,6 +1,6 @@
 import EmptyCell from "./EmptyCell";
 
-function Block(props) {
+export default function Block(props) {
     // border styling
     let blockClasses = "block";
     if ([0,1,3,4,6,7].includes(props.idx)) {
@@ -11,11 +11,12 @@ function Block(props) {
     }
     const cells = props.blockMatrix.map((cell, idx) => {
         if (Array.isArray(cell)) {
-            return <EmptyCell key={idx} idx={idx} 
-                blockIdx={props.idx} 
+            return <EmptyCell key={idx} idx={idx}
+                cellOptions={cell}
+                blockIdx={props.idx}
                 enterNumber={props.enterNumber}
+                addUserCrossOut={props.addUserCrossOut}
                 removeUserCrossOut={props.removeUserCrossOut}
-                cellOptions={cell} 
                 highlightNums={props.highlightNums}
                 xoToolActive={props.xoToolActive} />
         } else {
@@ -27,10 +28,5 @@ function Block(props) {
         }
     });
 
-    return (
-        <div className={blockClasses}>
-            {cells}
-        </div>
-    )
+    return <div className={blockClasses}>{cells}</div>;
 }
-export default Block;

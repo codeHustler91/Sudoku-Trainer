@@ -1,4 +1,4 @@
-function EmptyCell(props) {
+export default function EmptyCell(props) {
     let size;
     if (props.cellOptions.length === 1) {
         size = "opt-size-4";
@@ -9,17 +9,19 @@ function EmptyCell(props) {
     } else {
         size = "opt-size-1";
     }
+
     const numButtons = props.cellOptions.map((num, idx) => {
         if (Array.isArray(num)) {
             // an array here means its been eliminated as a possibility for this cell
             let button;
             if (num[1] === "User" && props.xoToolActive) {
                 // option has been crossed out by user and xoTool is active
-                button = <button className={`num-btn not-poss ${size}`} key={idx} value={num[0]}
+                button = <button className={`num-btn not-poss pointer ${size}`} key={idx} value={num[0]}
                             onClick={() => props.removeUserCrossOut(props.blockIdx, props.idx, num)}>
                             {num[0]}
                         </button>
             } else {
+                // crossed out by computer (should remain crossed out)
                 button = <button className={`num-btn not-poss ${size}`} key={idx} value={num[0]}>{num[0]}</button>
             }
             return (<span key={idx}
@@ -32,7 +34,13 @@ function EmptyCell(props) {
             if (props.highlightNums.includes(num)) {
                 background = "highlight poss";
             } else if (props.xoToolActive) {
-                background = "white-back red-back-h"
+                background = "white-back red-back-hov";
+                return (
+                    <button className={`num-btn ${size} ${background}`} key={idx} value={num}
+                        onClick={() => props.addUserCrossOut(props.blockIdx, props.idx, num)}>
+                        {num}
+                    </button>
+                );
             } else {
                 background = "white-back poss";
             }
@@ -45,11 +53,5 @@ function EmptyCell(props) {
         }
     });
 
-    return (
-        <div className="cell empty">
-            {numButtons}
-        </div>
-    );
+    return <div className="cell">{numButtons}</div>;
 }
-
-export default EmptyCell;
