@@ -1,3 +1,6 @@
+button {
+  color: black;
+}
 .game-stuff {
   display: flex;
 }
