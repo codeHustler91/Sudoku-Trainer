@@ -15,7 +15,7 @@ export default function Highlight(props) {
 
     return (
         <div className='hilite-box'>
-            <p className="tools-text">Hightlight Numbers: </p>
+            <div className="tools-text">Hightlight Numbers: </div>
             {hiliteNums}
         </div>
     );

@@ -1,3 +1,15 @@
+h1, h2 {
+  color: #63826e;
+}
+h2 {
+  margin: 1.25rem 0 1.25rem 0.5rem;
+}
+h3 {
+  margin-left: 0.5rem;
+}
+p {
+  margin-left: 0.5rem;
+}
 button {
   color: black;
 }
@@ -5,16 +17,24 @@ button {
   display: flex;
 }
 .sudoku-info {
-  width: 20vw;
   border-right: 1px solid rgb(128, 205, 23);
+  padding-right: 0.5rem;
 }
-.info-header {
-  margin: 1.25rem 1rem;
+.wide {
+  width: 35vw;
+}
+.narrow {
+  width: 20vw;
+}
+.puzzle-container {
+  margin-left: 5px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .puzzle-btn {
-  border-top: 1px solid rgb(203, 220, 25);
-  height: 30px;
-  padding-left: 1rem;
+  margin: 3px;
+  border: 1px solid rgb(203, 220, 25);
+  padding: 4px;
   display: flex;
   align-items: center;
 }
@@ -27,6 +47,10 @@ button {
 }
 .puz-btn-selected:hover {
   cursor: default;
+}
+.heading-collapsible:hover {
+  cursor: pointer;
+  background-color: rgb(203, 215, 186);
 }
 
 .game-board {
@@ -80,9 +104,6 @@ button {
 }
 .highlight {
   background-color: rgb(239, 251, 114);
-}
-h1 {
-  color: #63826e;
 }
 .container {
   display: grid;
@@ -181,9 +202,6 @@ footer {
   justify-content: center;
   border-top: 1px solid rgb(203, 220, 25);
 }
-.credits {
-  margin-top: 2em;
-}
 
 /* iphone */
 @media (max-width: 900px) {
@@ -221,10 +239,10 @@ footer {
     border-top: 1px solid rgb(203, 220, 25);
     border-right: unset;
   }
-  .info-header {
+  h2 {
     margin: 0.5rem;
   }
-  .diff-group-mob {
+  .puzzle-container {
     display: flex;
     flex-wrap: wrap;
     margin: 3px;
