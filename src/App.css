@@ -202,11 +202,8 @@ footer {
   padding: 0 0.5rem;
 }
 
-/* iphone */
-@media (max-width: 900px) {
-  .game-stuff {
-    flex-direction: column-reverse;
-  }
+/* tablet */
+@media (max-width: 1400px) and (hover: none) {
   .cross-out-tool {
     border: 1px solid rgb(224 60 25 / 41%);
   }
@@ -214,6 +211,21 @@ footer {
     margin: 1px 2px;
     border: 1px solid rgb(182, 236, 107);
     padding: 0px 3px 1px;
+  }
+}
+
+/* iphone */
+@media (max-width: 1000px) {
+  .game-stuff {
+    flex-direction: column-reverse;
+  }
+  .sudoku-info {
+    width: unset;
+    border-top: 1px solid rgb(203, 220, 25);
+    border-right: unset;
+  }
+  h2 {
+    margin: 0.5rem 0;
   }
   .game-board {
     margin-bottom: 1em;
@@ -225,21 +237,11 @@ footer {
     margin: 3px;
   }
   .opt-size-1 {
-    height: 18px;
     width: 16px;
     margin: 1px;
   }
   .opt-size-3 {
     height: 25px;
     width: 40px;
-    margin: 2px;
-  }
-  .sudoku-info {
-    width: unset;
-    border-top: 1px solid rgb(203, 220, 25);
-    border-right: unset;
-  }
-  h2 {
-    margin: 0.5rem 0;
   }
 }
