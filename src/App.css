@@ -2,13 +2,10 @@ h1, h2 {
   color: #63826e;
 }
 h2 {
-  margin: 1.25rem 0 1.25rem 0.5rem;
+  margin: 1.25rem 0;
 }
 h3 {
-  margin-left: 0.5rem;
-}
-p {
-  margin-left: 0.5rem;
+  margin: 1rem 0;
 }
 button {
   color: black;
@@ -18,7 +15,7 @@ button {
 }
 .sudoku-info {
   border-right: 1px solid rgb(128, 205, 23);
-  padding-right: 0.5rem;
+  padding: 0 0.5rem;
 }
 .wide {
   width: 35vw;
@@ -27,7 +24,6 @@ button {
   width: 20vw;
 }
 .puzzle-container {
-  margin-left: 5px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -74,7 +70,13 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 1px 4rem;
   border: 1px solid #fff;
+  padding: 1px 0;
+}
+.cross-out-tool:hover {
+  border: 1px solid rgb(224 60 25 / 41%);
+  cursor: pointer;
 }
 .red-back {
   background-color: rgb(224 60 25 / 41%);
@@ -84,10 +86,6 @@ button {
 }
 .red-back-hov:hover {
   background-color: rgb(224 60 25 / 41%);
-  cursor: pointer;
-}
-.cross-out-tool:hover {
-  border: 1px solid rgb(224 60 25 / 41%);
   cursor: pointer;
 }
 .hilite-box {
@@ -201,19 +199,21 @@ footer {
   display: flex;
   justify-content: center;
   border-top: 1px solid rgb(203, 220, 25);
+  padding: 0 0.5rem;
 }
 
 /* iphone */
 @media (max-width: 900px) {
   .game-stuff {
-    display: flex;
     flex-direction: column-reverse;
   }
   .cross-out-tool {
-    border-left: 1px solid rgb(224 60 25 / 41%);
-    border-bottom: 1px solid rgb(224 60 25 / 41%);
-    padding: 3px 26px;
-    margin: 3px auto;
+    border: 1px solid rgb(224 60 25 / 41%);
+  }
+  .hilite-nums {
+    margin: 1px 2px;
+    border: 1px solid rgb(182, 236, 107);
+    padding: 0px 3px 1px;
   }
   .game-board {
     margin-bottom: 1em;
@@ -240,19 +240,6 @@ footer {
     border-right: unset;
   }
   h2 {
-    margin: 0.5rem;
-  }
-  .puzzle-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 3px;
-  }
-  .puzzle-btn {
-    border-left: 1px solid rgb(203, 220, 25);
-    height: unset;
-    padding: 3px 4px;
-    margin: 4px 5px;
-    display: flex;
-    align-items: center;
+    margin: 0.5rem 0;
   }
 }
