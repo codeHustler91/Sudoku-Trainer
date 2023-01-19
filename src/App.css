@@ -2,10 +2,13 @@ h1, h2 {
   color: #63826e;
 }
 h2 {
-  margin: 1.25rem 0;
+  margin: 1.25rem 0 0.75rem;
 }
 h3 {
-  margin: 1rem 0;
+  margin: 1rem 0 0.5rem;
+}
+p {
+  margin: 0.5rem 0;
 }
 button {
   color: black;

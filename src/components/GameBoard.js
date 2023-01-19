@@ -49,14 +49,9 @@ export default class GameBoard extends React.Component {
   }
   addUserCrossOut = (blockIdx, cellIdx, value) => {
     // function only given to number options when xoToolActive is true
-    if (this.props.board === "blank" || answers[this.props.board][blockIdx][cellIdx] !== parseInt(value)) {
-      // if the board is "blank" (no solution) or number is not the answer for that cell
-      const newMatrix = [...this.state.possMatrix];
-      this.userCrossOut.push({blockIdx, cellIdx, number: parseInt(value)});
-      this.eliminatePhase1(newMatrix);
-    } else {
-      alert("Don't cross out that one! Exit Cross Out mode to pick answers.");
-    }
+    const newMatrix = [...this.state.possMatrix];
+    this.userCrossOut.push({blockIdx, cellIdx, number: parseInt(value)});
+    this.eliminatePhase1(newMatrix);
   }
   removeUserCrossOut = (blockIdx, cellIdx, value) => {
     // function only given to number options who've been crossed out by users and xoTool is active
